@@ -305,3 +305,18 @@ html[data-theme=light] .fbtn.ok,html[data-theme=light] #cs{background:#4b35d8!im
 html[data-theme=light] .ch-big,html[data-theme=light] .ch-t,html[data-theme=light] .star{color:#9a5b00}
 html[data-theme=light] .ch-st span{background:#fff;border-color:#b87400}
 html[data-theme=light] .note,html[data-theme=light] .why,html[data-theme=light] .sr-n,html[data-theme=light] .sri-b,html[data-theme=light] .tmr-h{color:#3a3360}
+/* ===== colorful light theme ===== */
+html[data-theme=light] body{background:linear-gradient(180deg,#c9bfff 0,#ddd5ff 380px,#e6e0ff 100%)!important;background-attachment:fixed}
+html[data-theme=light] .hero{background:linear-gradient(135deg,#6a49ff 0%,#4b35d8 55%,#2d1b94 100%);box-shadow:0 18px 36px -18px rgba(75,53,216,.8)}
+html[data-theme=light] a.cc{background:#f1edff;border:1px solid #9d90f5;border-inline-start:5px solid #4b35d8;box-shadow:0 8px 18px -12px rgba(75,53,216,.6)}
+html[data-theme=light] .nav a{background:#efeaff;border-color:#9d90f5;color:#1d1450}
+html[data-theme=light] .tabs{background:#d3caff;border-color:#8b7df0}
+html[data-theme=light] .tab{color:#271a6b}
+html[data-theme=light] .ex,html[data-theme=light] .cbox,html[data-theme=light] .tmr,html[data-theme=light] .score{background:#f1edff;border-color:#9d90f5}
+html[data-theme=light] .tip{background:#fff1c2;border-color:#e0a300}
+html[data-theme=light] .warn{background:#ffe9a8;border-color:#e0a300;border-inline-start-color:#b87400}
+html[data-theme=light] .opt{background:#f4f1ff;border-color:#8b7df0}
+html[data-theme=light] .opt:not(.dis):hover{background:#ffe9a8;border-color:#b87400}
+html[data-theme=light] .sb input,html[data-theme=light] .tbb,html[data-theme=light] .sr{background:#f1edff;border-color:#8b7df0}
+html[data-theme=light] .ch-st span{background:#fff1c2}
+html[data-theme=light] .c{border-bottom-color:#b8adf7}
