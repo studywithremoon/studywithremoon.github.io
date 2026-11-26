@@ -252,8 +252,9 @@ body{background:linear-gradient(180deg,color-mix(in srgb,var(--a,#38bdf8) 20%,#0
 .hero{position:relative;background:linear-gradient(160deg,#16224a 0%,#0a0f1f 100%);border:1px solid var(--bd);box-shadow:0 20px 40px -22px rgba(0,0,0,.9);overflow:hidden}
 .hero::before{background:none}
 .hero::after{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,#38bdf8,#fbbf24,#fb7185,#a78bfa,#34d399,#f472b6)}
-.hero.s{background:linear-gradient(135deg,color-mix(in srgb,var(--a) 58%,#0a0f1f) 0%,color-mix(in srgb,var(--a) 22%,#0a0f1f) 100%)!important;border-color:var(--a)}
-.hero.s::after{background:var(--a)}
+body{--c:var(--a,#38bdf8)}
+.hero.s{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 58%,#0a0f1f) 0%,color-mix(in srgb,var(--c) 22%,#0a0f1f) 100%)!important;border-color:var(--c)}
+.hero.s::after{background:var(--c)}
 .stats div{background:rgba(5,9,25,.55);border:1px solid rgba(255,255,255,.22)}
 .pill{background:rgba(255,200,61,.14);border:1px solid #ffc83d;color:#ffd96b}
 .prog{background:rgba(5,9,25,.6)}.prog i{background:linear-gradient(90deg,#38bdf8,#34d399,#fbbf24,#fb7185,#f472b6);box-shadow:none}
@@ -290,7 +291,7 @@ html[data-theme=light]{background:#fff4dc}
 html[data-theme=light] body{background:linear-gradient(180deg,color-mix(in srgb,var(--a,#fbbf24) 34%,#fff6e2) 0,#fff6e2 420px),#fff6e2!important;color:#101428}
 html[data-theme=light] .r{color:var(--a,#b87400);opacity:.06}
 html[data-theme=light] .hero{background:linear-gradient(160deg,#16224a,#0a0f1f)}
-html[data-theme=light] .hero.s{background:linear-gradient(135deg,color-mix(in srgb,var(--a) 70%,#0a0f1f) 0%,color-mix(in srgb,var(--a) 34%,#0a0f1f) 100%)!important}
+html[data-theme=light] .hero.s{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 70%,#0a0f1f) 0%,color-mix(in srgb,var(--c) 34%,#0a0f1f) 100%)!important}
 html[data-theme=light] a.cc{background:color-mix(in srgb,var(--a) 14%,#fffdf6);border:1px solid color-mix(in srgb,var(--a) 55%,#fff);border-inline-start:6px solid var(--a);box-shadow:0 8px 18px -14px var(--a)}
 html[data-theme=light] .cc strong{color:#101428}
 html[data-theme=light] .cc .go,html[data-theme=light] a.cc::before{color:color-mix(in srgb,var(--a) 62%,#000)}
