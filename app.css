@@ -346,3 +346,16 @@ a.cc.flip{animation:ccflip .5s cubic-bezier(.5,0,.8,.4) forwards;z-index:3;box-s
 a.cc.dim{opacity:.3;filter:blur(1.5px) saturate(.6);transform:perspective(700px) scale(.94) translateY(6px)}
 @keyframes ccflip{0%{transform:perspective(700px) rotateY(0) scale(1)}60%{transform:perspective(700px) rotateY(90deg) scale(1.06);opacity:1}100%{transform:perspective(700px) rotateY(90deg) scale(1.1);opacity:0}}
 @media(prefers-reduced-motion:reduce){a.cc,a.cc.flip,body{animation:none!important;transition:none!important}}
+/* v15 no purple */
+[style*="#a78bfa"]{--a:#2dd4bf!important}
+html[data-theme=light] [style*="#a78bfa"]{--a:#0f766e!important}
+.hero{background:linear-gradient(125deg,#22d3ee 0%,#2563eb 40%,#0b1f4d 72%,#0e7490 100%)!important;background-size:260% 260%!important}
+.nav a.on:not([style]),#cs{background:linear-gradient(135deg,#2563eb,#22d3ee)!important}
+.hero::after,.prog i{background:linear-gradient(90deg,#38bdf8,#fbbf24,#a3e635,#2dd4bf,#34d399,#fb923c,#38bdf8)!important;background-size:300% 100%!important}
+.cbox{background:linear-gradient(90deg,rgba(34,211,238,.14),rgba(37,99,235,.1))!important}
+body,html[data-theme=light] body{--pp:0}
+html[data-theme=light] body{background:radial-gradient(900px 520px at 90% -6%,rgba(34,211,238,.2),transparent 62%),radial-gradient(700px 480px at -6% 34%,rgba(163,230,53,.14),transparent 62%),#f6fbff!important}
+html[data-theme=light]{background:#f6fbff}
+[style*="#8b3dff"]{--a:#22d3ee!important}
+html[data-theme=light] [style*="#8b3dff"]{--a:#0e7490!important}
+:root{--mu:#b9c8e6}
