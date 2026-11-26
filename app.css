@@ -317,3 +317,19 @@ html[data-theme=light] .sri-k{background:color-mix(in srgb,var(--a,#fbbf24) 25%,
 html[data-theme=light] .ch-st span{background:#fffdf6}
 html[data-theme=light] .note,html[data-theme=light] .why,html[data-theme=light] .sr-n,html[data-theme=light] .sri-b,html[data-theme=light] .tmr-h{color:#34395c}
 html[data-theme=light] .stats div{background:rgba(5,9,25,.55)}
+/* v10: no red/pink, playful moving colors */
+[style*="#fb7185"]{--a:#a3e635!important}
+[style*="#f472b6"]{--a:#fb923c!important}
+html[data-theme=light] [style*="#fb7185"]{--a:#4d7c0f!important}
+html[data-theme=light] [style*="#f472b6"]{--a:#c2570c!important}
+.hero{background:linear-gradient(125deg,#22d3ee 0%,#7a35f0 38%,#1d0f52 70%,#0e7490 100%)!important;background-size:260% 260%!important;animation:hmove 16s ease-in-out infinite;box-shadow:0 26px 60px -20px rgba(34,211,238,.55),inset 0 1px 0 rgba(255,255,255,.4)!important}
+.hero::after{background:linear-gradient(90deg,#38bdf8,#fbbf24,#a3e635,#a78bfa,#34d399,#fb923c,#38bdf8)!important;background-size:300% 100%!important;animation:smove 9s linear infinite}
+.prog i{background:linear-gradient(90deg,#38bdf8,#34d399,#a3e635,#fbbf24,#fb923c,#38bdf8)!important;background-size:300% 100%!important;animation:smove 9s linear infinite}
+.nav a.on:not([style]),#cs{background:linear-gradient(135deg,#8a3dff,#22d3ee)!important;box-shadow:0 10px 24px -10px rgba(34,211,238,.7)!important}
+@keyframes hmove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes smove{0%{background-position:0% 0}100%{background-position:300% 0}}
+a.cc{transition:transform .25s,box-shadow .25s}a.cc:hover{transform:translateY(-3px);box-shadow:0 14px 28px -14px var(--a)}
+html[data-theme=light] body{background:radial-gradient(900px 520px at 90% -6%,rgba(34,211,238,.2),transparent 62%),radial-gradient(700px 480px at -6% 34%,rgba(163,230,53,.14),transparent 62%),#fbf8ff!important}
+html[data-theme=light] .hero{box-shadow:0 22px 50px -22px rgba(14,116,144,.6)!important}
+@media(prefers-reduced-motion:reduce){.hero,.hero::after,.prog i{animation:none!important}}
+.cbox{border-inline-start-color:#22d3ee!important;background:linear-gradient(90deg,rgba(34,211,238,.14),rgba(124,58,237,.08))!important}
