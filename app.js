@@ -15,7 +15,7 @@ var pageFile=(location.pathname.split('/').pop()||'index.html');
 var meta=document.querySelector('meta[name=theme-color]');if(!meta){meta=mk('meta');meta.name='theme-color';document.head.appendChild(meta)}
 var tbtn=mk('button','tbb');tbtn.type='button';
 function applyTheme(t,save){if(t==='light')html.setAttribute('data-theme','light');else html.removeAttribute('data-theme');
-meta.content=t==='light'?'#faf7ff':'#170d36';
+meta.content=t==='light'?'#f4f9ff':'#0a1a30';
 tbtn.innerHTML=ico(t==='light'?I.moon:I.sun);var l=t==='light'?'التبديل إلى الوضع الداكن':'التبديل إلى الوضع الفاتح';tbtn.setAttribute('aria-label',l);tbtn.title=l;
 if(save)ls('fr2-theme',t)}
 tbtn.onclick=function(){applyTheme(html.getAttribute('data-theme')==='light'?'dark':'light',true)};
