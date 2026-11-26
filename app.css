@@ -203,7 +203,8 @@ a.cc::before{opacity:.55}
 .cc strong,.cc .go{color:var(--a);filter:brightness(1.15)}
 .cc p,.cc span{color:#efe9ff}
 .nav a{border-color:rgba(255,255,255,.22);color:#fff}
-.nav a.on{color:#07031a;font-weight:700;background:var(--a)}
+.nav a.on{color:#07031a;font-weight:700;background:var(--a,#8a3dff)}
+.nav a.on:not([style]){background:linear-gradient(135deg,#a855f7,#ff2d95);color:#fff}
 .tabs{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
 .tab.on{background:var(--a);color:#07031a;font-weight:700}
 .ex{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14)}
@@ -230,7 +231,7 @@ html[data-theme=light] a.cc{background:#fff;border-color:color-mix(in srgb,var(-
 html[data-theme=light] .cc strong,html[data-theme=light] .cc .go{color:var(--a);filter:none}
 html[data-theme=light] .cc p,html[data-theme=light] .cc span{color:#2a1f4a}
 html[data-theme=light] .nav a{color:#0c0522;border-color:rgba(40,20,90,.3)}
-html[data-theme=light] .nav a.on,html[data-theme=light] .tab.on,html[data-theme=light] .qn{background:var(--a);color:#fff}
+html[data-theme=light] .nav a.on,html[data-theme=light] .tab.on,html[data-theme=light] .qn{background:var(--a,#6a1bff);color:#fff}
 html[data-theme=light] .tabs{background:rgba(40,20,90,.09);border-color:rgba(40,20,90,.22)}
 html[data-theme=light] .ex{background:#fff;border-color:rgba(40,20,90,.18)}
 html[data-theme=light] .opt{background:#fff;color:#0c0522;border-color:rgba(40,20,90,.35)}
