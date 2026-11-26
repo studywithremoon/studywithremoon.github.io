@@ -333,3 +333,4 @@ html[data-theme=light] body{background:radial-gradient(900px 520px at 90% -6%,rg
 html[data-theme=light] .hero{box-shadow:0 22px 50px -22px rgba(14,116,144,.6)!important}
 @media(prefers-reduced-motion:reduce){.hero,.hero::after,.prog i{animation:none!important}}
 .cbox{border-inline-start-color:#22d3ee!important;background:linear-gradient(90deg,rgba(34,211,238,.14),rgba(124,58,237,.08))!important}
+a.cc strong,.cc strong{font-size:15px!important}a.cc span,.cc span:not(.go){font-size:13px!important}
