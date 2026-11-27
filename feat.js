@@ -94,5 +94,5 @@ if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textConte
 // occasional surprise sticker while scrolling (rate limited, never on practice/game pages)
 (function(){try{var P=location.pathname.split('/').pop()||'index.html';if(/^(practice|game|run)/.test(P)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var lastY=scrollY,acc=0,lastT=Date.now()-20000;addEventListener('scroll',function(){acc+=Math.abs(scrollY-lastY);lastY=scrollY;if(acc>900&&Date.now()-lastT>50000&&!document.querySelector('.wl,.stk')&&Math.random()<.35){acc=0;lastT=Date.now();SD_TOAST('sur')}else if(acc>900)acc=0},{passive:true})}catch(e){}})();
 
-(function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&s.textContent.indexOf('Prepared')<0)s.textContent='Prepared by Remoon Esam'}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
+(function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&s.textContent!=='إعداد ريمون عصام'){s.textContent='إعداد ريمون عصام';s.setAttribute('dir','rtl')}}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
 (function(){function g(){var P=location.pathname.split('/').pop();if(P==='game.html')return;document.querySelectorAll('.nav a[href="game.html"]').forEach(function(a){a.remove()})}g();document.addEventListener('DOMContentLoaded',g)})();
