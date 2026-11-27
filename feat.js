@@ -94,14 +94,14 @@ if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textConte
 // occasional surprise sticker while scrolling (rate limited, never on practice/game pages)
 (function(){try{var P=location.pathname.split('/').pop()||'index.html';if(/^(practice|run)/.test(P)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var lastY=scrollY,acc=0,lastT=Date.now()-20000;addEventListener('scroll',function(){acc+=Math.abs(scrollY-lastY);lastY=scrollY;if(acc>900&&Date.now()-lastT>50000&&!document.querySelector('.wl,.stk')&&Math.random()<.35){acc=0;lastT=Date.now();SD_TOAST('sur')}else if(acc>900)acc=0},{passive:true})}catch(e){}})();
 
-(function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&!s.dataset.cr){s.dataset.cr=1;s.setAttribute('dir','rtl');s.innerHTML='<i class="tw">✨</i> إعداد Remoon Esam <i class="tw">✨</i>';if(!document.getElementById('twk')){var st=document.createElement('style');st.id='twk';st.textContent='.tw{font-style:normal;display:inline-block;animation:twk 2.4s ease-in-out infinite;filter:saturate(1.1)}@keyframes twk{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}@media(prefers-reduced-motion:reduce){.tw{animation:none}}';document.head.appendChild(st)}}}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
+(function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&!s.dataset.cr){s.dataset.cr=1;s.setAttribute('dir','rtl');s.innerHTML='إعداد <i class="tw">✨</i> <bdi dir="ltr">Remoon Esam</bdi> <i class="tw">✨</i>';if(!document.getElementById('twk')){var st=document.createElement('style');st.id='twk';st.textContent='.tw{font-style:normal;display:inline-block;animation:twk 2.4s ease-in-out infinite;filter:saturate(1.1)}@keyframes twk{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}@media(prefers-reduced-motion:reduce){.tw{animation:none}}';document.head.appendChild(st)}}}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
 
 // ownership + light copy deterrent (owner device exempt)
 (function(){try{var L=localStorage;var P=(location.pathname.split('/').pop()||'index.html');
 var m=document.createElement('meta');m.name='copyright';m.content='© Remoon Esam. All rights reserved. Not for copying or redistribution.';document.head.appendChild(m);
 var r=document.createElement('meta');r.name='robots';r.content='noai, noimageai';document.head.appendChild(r);
 document.documentElement.setAttribute('data-own','studywithremoon\u200b\u200c\u200d');
-if(L.getItem('sd-owner')==='1')return;
+if(L.getItem('sd-owner')==='1'&&!sessionStorage.getItem('sd-vv'))return;
 if(/^(contact|dash)/.test(P))return;
 var s=document.createElement('style');s.textContent='main{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none}';document.head.appendChild(s);
 document.addEventListener('copy',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;try{e.clipboardData.setData('text/plain','© Remoon Esam · studywithremoon.github.io');e.preventDefault()}catch(x){}});
@@ -113,3 +113,17 @@ try{console.log('%cStudy With Remoon','font:700 18px sans-serif;color:#5eead4','
 // sticker ownership marker + no drag/save
 (function(){try{var s=document.createElement('style');s.textContent='.stk{pointer-events:none;-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}';document.head.appendChild(s);
 new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.tagName==='IMG'){n.draggable=false;n.setAttribute('data-by','Remoon Esam');n.setAttribute('alt','')}})})}).observe(document.body||document.documentElement,{childList:true,subtree:true})}catch(e){}})();
+
+// owner-only layer (hidden for visitors)
+(function(){try{var L=localStorage;if(L.getItem('sd-owner')!=='1')return;var vv=!!sessionStorage.getItem('sd-vv');
+var st=document.createElement('style');st.textContent='.ob{margin-inline-start:8px;font-size:11px;font-weight:800;color:#1a1a1a;background:#fbbf24;border:0;border-radius:99px;padding:2px 9px;font-family:inherit;cursor:pointer}.ovp{position:fixed;z-index:99999;inset-inline:12px;bottom:12px;max-width:420px;margin-inline:auto;background:#0b1730;border:1px solid #fbbf24;border-radius:16px;padding:12px 14px;box-shadow:0 10px 40px rgba(0,0,0,.6);direction:rtl;color:#f0f9ff;font-size:14px}.ovp h4{margin:0 0 8px;color:#fde68a;font-size:15px}.ovp a,.ovp button{display:inline-block;margin:3px 3px 3px 0;padding:6px 12px;border-radius:10px;border:1px solid rgba(251,191,36,.6);background:transparent;color:#fde68a;font:700 13px inherit;font-family:inherit;text-decoration:none}.ovp .x{float:left;border:0;padding:0 6px}.vvb{position:fixed;z-index:99999;bottom:10px;inset-inline-start:10px;font-size:11px;font-weight:800;color:#1a1a1a;background:#fbbf24;border:0;border-radius:99px;padding:5px 12px;font-family:inherit;opacity:.85}';document.head.appendChild(st);
+function go(){
+if(vv){if(!document.querySelector('.vvb')){var r=document.createElement('button');r.className='vvb';r.textContent='عودة للمالك';r.onclick=function(){sessionStorage.removeItem('sd-vv');location.reload()};document.body.appendChild(r)}return}
+var s=document.querySelector('.ownstrip');if(!s||s.querySelector('.ob'))return;var b=document.createElement('button');b.className='ob';b.type='button';b.textContent='المالك';b.onclick=panel;s.appendChild(b)}
+function panel(){var o=document.querySelector('.ovp');if(o){o.remove();return}var p=document.createElement('div');p.className='ovp';
+var base=location.pathname.indexOf('/term2/')>-1?'':'';
+p.innerHTML='<button class="x" type="button">إغلاق ✕</button><h4>وضع المالك</h4><div><a href="https://studywithremoon.goatcounter.com" target="_blank" rel="noopener">إحصاءات الزيارات</a><a href="index.html">الرئيسية</a><a href="dash.html">لوحتي</a><a href="practice.html">تدريب</a><a href="words.html">رتّب الإجابة</a><a href="contact.html">تواصل</a><button type="button" id="ov-vv">عرض كزائر</button><button type="button" id="ov-off">خروج من وضع المالك</button></div>';
+document.body.appendChild(p);p.querySelector('.x').onclick=function(){p.remove()};
+p.querySelector('#ov-vv').onclick=function(){sessionStorage.setItem('sd-vv','1');location.reload()};
+p.querySelector('#ov-off').onclick=function(){L.removeItem('sd-owner');L.removeItem('skipgc');location.reload()}}
+go();document.addEventListener('DOMContentLoaded',go);setTimeout(go,700)}catch(e){}})();
