@@ -26,16 +26,12 @@ var sb=mk('div','sb');var sico=mk('span');sico.innerHTML=ico(I.search);sico.firs
 var inp=mk('input');inp.type='search';inp.placeholder='ابحث في المواد';inp.setAttribute('aria-label','ابحث في كل المواد');inp.autocomplete='off';inp.enterKeyHint='search';
 sb.append(sico.firstChild,inp);
 var tmb=mk('button','tbb');tmb.type='button';tmb.innerHTML=ico(I.timer);tmb.setAttribute('aria-label','مؤقت المذاكرة 25 دقيقة');tmb.title='مؤقت المذاكرة';tmb.setAttribute('aria-expanded','false');
-var sh=mk('a','tbb wa');sh.innerHTML=ico(I.wa);sh.target='_blank';sh.rel='noopener noreferrer';sh.setAttribute('aria-label','شارك الموقع على واتساب');sh.title='شارك الموقع على واتساب';
-var shText='مواد الفرقة الثانية: ملخصات وشرح وأسئلة تدريب\n'+SITE;
-sh.href='https://wa.me/?text='+encodeURIComponent(shText);
-tb.append(sb,tmb,tbtn,sh);
+
+
+tb.append(sb,tmb,tbtn);
 var sr=mk('div','sr');sr.hidden=true;sr.id='sr';inp.setAttribute('aria-controls','sr');
 tb.appendChild(sr);wrap.appendChild(tb);main.insertBefore(wrap,main.firstChild);
 applyTheme(ls('fr2-theme')==='light'?'light':'dark',false);
-
-/* share box on home */
-if(document.querySelector('.hero:not(.s)')){var w0=document.querySelector('.warn');if(w0){var box=mk('div','sharebox');box.appendChild(mk('p','','عجبك الموقع؟ ابعته لزمايلك على واتساب.'));var a=mk('a','shb');a.href=sh.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='شارك الموقع على واتساب';box.appendChild(a);w0.parentNode.insertBefore(box,w0)}}
 
 /* search */
 var IDX=null,loading=null;
