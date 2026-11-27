@@ -104,7 +104,7 @@ cur=Q[n];$("a-i").textContent=n+1;$("a-ok").textContent=ok;$("a-m").textContent=
 $("a-s").textContent=cur.s||"";$("a-q").textContent=cur.q;
 var o=cur.o.map(function(t,i){return{t:strip(t),c:i===cur.a}});sh(o);
 var T=$("a-t");T.innerHTML="";o.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="tb2";b.dataset.c=x.c?1:0;b.innerHTML='<span class="ring"></span><span></span>';b.lastChild.textContent=x.t;b.onclick=function(){shoot(b)};T.appendChild(b)});
-var a=$("a-a");a.style.transform="";a.style.opacity=1}
+var a=$("a-a");a.style.transition="none";a.style.transform="";a.style.opacity=1;try{a.getAnimations().forEach(function(x){x.cancel()})}catch(e){}}
 function shoot(b){if(busy)return;busy=true;
 var T=document.querySelectorAll(".tb2");T.forEach(function(x){x.disabled=true});
 var r=$("a-r").getBoundingClientRect(),a=$("a-a"),ar=a.getBoundingClientRect(),br=b.getBoundingClientRect();
@@ -112,7 +112,7 @@ var sx=ar.left+ar.width/2,sy=ar.top+ar.height,tx=br.left+br.width/2,ty=br.top+br
 var dx=tx-sx,dy=ty-sy,ang=Math.atan2(dx,-dy)*180/Math.PI;
 var done=function(){reveal(b)};
 try{a.style.transform="rotate("+ang+"deg)";var an=a.animate([{transform:"rotate("+ang+"deg) translateY(0)"},{transform:"rotate("+ang+"deg) translateY(-"+Math.hypot(dx,dy)+"px)"}],{duration:420,easing:"ease-in",fill:"forwards"});an.onfinish=done}catch(e){done()}}
-function reveal(b){var good=b.dataset.c==="1";n++;
+function reveal(b){var good=b.dataset.c==="1";n++;var aa=$("a-a");aa.style.transition="opacity .5s";aa.style.opacity=0;
 document.querySelectorAll(".tb2").forEach(function(x){if(x.dataset.c==="1")x.classList.add("ok")});
 if(good){ok++;$("a-m").style.color="#86efac";$("a-m").textContent=HIT[Math.floor(Math.random()*HIT.length)]}
 else{b.classList.add("no");$("a-m").style.color="#fde68a";$("a-m").textContent=FUN[Math.floor(Math.random()*FUN.length)]}
