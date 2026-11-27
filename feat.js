@@ -132,3 +132,12 @@ go();document.addEventListener('DOMContentLoaded',go);setTimeout(go,700)}catch(e
 // sticker safety: some stickers are excluded everywhere
 (function(){try{var BAN=[22,52,70],o=window.SD_PICK;if(!o)return;window.SD_PICK=function(a,c){for(var k=0;k<30;k++){var r=o(a,c);if(BAN.indexOf(a.indexOf(r))<0)return r}for(var i=0;i<a.length;i++)if(BAN.indexOf(i)<0)return a[i]};
 if(window.SD_CATS)Object.keys(SD_CATS).forEach(function(k){SD_CATS[k]=SD_CATS[k].filter(function(i){return BAN.indexOf(i)<0})})}catch(e){}})();
+
+// home: exam countdown + per-subject progress bars
+(function(){try{var P=location.pathname.split('/').pop()||'index.html';if(P!=='index.html')return;var L=localStorage;
+function go(){var h=document.querySelector('.hero:not(.s)');if(!h||h.querySelector('.exc'))return;
+var ed=L.getItem('sd-exam');if(ed){var d=Math.ceil((new Date(ed+'T00:00:00')-new Date())/864e5);if(d>=0){var c=document.createElement('p');c.className='exc';c.style.cssText='margin:8px 0 0;font-size:14px;color:#fde68a;font-weight:700';c.textContent=d===0?'الامتحان النهارده، بالتوفيق!':'باقي '+d+' يوم على الامتحان';var st=h.querySelector('.stats');if(st)st.parentNode.insertBefore(c,st);else h.appendChild(c)}}
+var pr={};try{pr=JSON.parse(L.getItem('fr2-progress')||'{}')}catch(e){}
+fetch('mcq.json').then(function(r){return r.json()}).then(function(m){var T={},D={};m.forEach(function(q){var s=q.p.replace(/\d.*$/,'').replace(/^pfb$/,'pf');T[s]=(T[s]||0)+1;var a=pr[q.p];if(a&&a[q.i]&&a[q.i].ok)D[s]=(D[s]||0)+1});
+document.querySelectorAll('a.cc[href$=".html"]').forEach(function(a){var s=a.getAttribute('href').replace('.html','');if(!T[s]||a.querySelector('.spb'))return;var n=D[s]||0,b=document.createElement('div');b.className='spb';b.setAttribute('aria-label','التقدم');b.style.cssText='height:5px;border-radius:99px;background:rgba(255,255,255,.12);margin-top:10px;overflow:hidden';var i=document.createElement('i');i.style.cssText='display:block;height:100%;border-radius:99px;background:var(--a,#5eead4);width:'+Math.round(n/T[s]*100)+'%';b.appendChild(i);var g=a.querySelector('.go');a.insertBefore(b,g||null);if(g)g.textContent=g.textContent+' · '+n+'/'+T[s]})}).catch(function(){})}
+go();document.addEventListener('DOMContentLoaded',go)}catch(e){}})();
