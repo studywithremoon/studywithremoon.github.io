@@ -68,7 +68,7 @@ setTimeout(function(){var d=document.createElement('div');d.className='sc';d.inn
 
 (function(){var f=document.querySelector('.fabs');if(!f)return;var t=document.createElement('button');t.type='button';t.className='fabt';t.textContent='☰';t.setAttribute('aria-label','القائمة');t.onclick=function(){f.classList.toggle('open');t.textContent=f.classList.contains('open')?'✕':'☰'};f.insertBefore(t,f.firstChild)})();
 
-(function(){var P=location.pathname.split('/').pop();if(P===''||P==='index.html'){var s=document.createElement('script');s.src='welcome.js?v=2';s.defer=true;document.body.appendChild(s)}})();
+(function(){var P=location.pathname.split('/').pop();if(P===''||P==='index.html'){var s=document.createElement('script');s.src='welcome.js?v=3';s.defer=true;document.body.appendChild(s)}})();
 
 // stickers
 window.SD_STKLOAD=function(cb){if(window.SD_ALL)return cb(window.SD_ALL);var F=[['stickers.js?v=2','SD_STK'],['stickers2.js?v=1','SD_STK2'],['stickers3.js?v=1','SD_STK3'],['stickers4.js?v=1','SD_STK4'],['stickers5.js?v=1','SD_STK5'],['stickers6.js?v=1','SD_STK6'],['stickers7.js?v=1','SD_STK7'],['stickers8.js?v=1','SD_STK8'],['stickers9.js?v=1','SD_STK9'],['stickers10.js?v=1','SD_STK10']],n=0;function fin(){window.SD_ALL=[].concat(window.SD_STK||[],window.SD_STK2||[],window.SD_STK3||[],window.SD_STK4||[],window.SD_STK5||[],window.SD_STK6||[],window.SD_STK7||[],window.SD_STK8||[],window.SD_STK9||[],window.SD_STK10||[]);window.SD_STK=window.SD_ALL;cb(window.SD_ALL)}F.forEach(function(f){if(window[f[1]]){if(++n===F.length)fin();return}var s=document.createElement('script');s.src=f[0];s.onload=s.onerror=function(){if(++n===F.length)fin()};document.body.appendChild(s)})};
@@ -93,3 +93,5 @@ if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textConte
 
 // occasional surprise sticker while scrolling (rate limited, never on practice/game pages)
 (function(){try{var P=location.pathname.split('/').pop()||'index.html';if(/^(practice|game|run)/.test(P)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var lastY=scrollY,acc=0,lastT=Date.now()-20000;addEventListener('scroll',function(){acc+=Math.abs(scrollY-lastY);lastY=scrollY;if(acc>900&&Date.now()-lastT>50000&&!document.querySelector('.wl,.stk')&&Math.random()<.35){acc=0;lastT=Date.now();SD_TOAST('sur')}else if(acc>900)acc=0},{passive:true})}catch(e){}})();
+
+(function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&s.textContent.indexOf('Prepared')<0)s.textContent='Prepared by Remoon Esam'}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
