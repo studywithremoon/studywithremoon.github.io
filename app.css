@@ -394,3 +394,12 @@ a#t-goalset{color:#7dd3fc!important}
 
 @media print{.snb{display:none!important}}
 @media print{span.r{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;font-size:340px!important;color:#000!important;opacity:.06!important;z-index:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* نقاط الملخص */
+.pt{margin:6px 0 2px;padding:0 20px 0 0;line-height:1.95}
+.pt li{margin-bottom:3px}
+/* حماية المحتوى */
+body{user-select:none;-webkit-user-select:none}
+textarea,input,[contenteditable]{user-select:text;-webkit-user-select:text}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483000;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><text x='30' y='120' fill='%23ffffff' font-size='20' font-family='sans-serif' transform='rotate(-28 120 120)'>%D9%85%D8%B0%D8%A7%D9%83%D8%B1%D8%A9</text></svg>");opacity:.05}
