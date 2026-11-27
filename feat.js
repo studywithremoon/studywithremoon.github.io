@@ -42,7 +42,7 @@ document.getElementById('fa1').onclick=function(){fs=Math.min(150,fs+10);documen
 document.getElementById('fa2').onclick=function(){fs=Math.max(80,fs-10);document.documentElement.style.fontSize=fs+'%';s('sd-fs',fs)};
 document.getElementById('fp').onclick=function(){window.print()};
 // owner badge
-if(L.getItem('sd-owner')==='1'){var o=document.createElement('div');o.className='ownx';o.innerHTML='<a href="dash.html">وضع المالك</a><a href="https://studywithremoon.goatcounter.com" target="_blank" rel="noopener">الإحصاءات</a>';document.body.appendChild(o)}
+if(L.getItem('sd-owner')==='1'){var o=document.createElement('div');o.className='ownx';o.innerHTML='<a href="dash.html">وضع المالك</a><a href="https://studywithremoon.goatcounter.com" target="_blank" rel="noopener">الإحصاءات</a><a href="#" id="gst">جرّب كزائر جديد</a>';document.body.appendChild(o)}
 // owner panel settings: banner/section hide
 var cfg=g('sd-owncfg',null);
 if(cfg&&cfg.banner&&P==='index.html'){var bn=document.createElement('div');bn.className='bnr';bn.textContent=cfg.banner;var m=document.querySelector('main');if(m)m.insertBefore(bn,m.firstChild)}
@@ -76,3 +76,15 @@ window.SD_STKLOAD=function(cb){if(window.SD_STK)return cb(window.SD_STK);var s=d
 window.SD_TOAST=function(i){SD_STKLOAD(function(a){var m=document.createElement('img');m.className='stk';m.alt='';m.src=a[i];document.body.appendChild(m);setTimeout(function(){m.remove()},2600)})};
 document.addEventListener('click',function(e){var b=e.target.closest('.op');if(!b||!b.parentNode.classList.contains('mc')||b.parentNode.closest('#pr'))return;setTimeout(function(){if(b.classList.contains('ok')){SD_TOAST(0)}},60)});
 })();
+
+// guest mode: clean slate, progress backed up and restored on exit
+(function(){try{var L=localStorage,K=['sd-owner','sd-bak','sd-gm'];
+function ks(){var a=[];for(var i=0;i<L.length;i++){var k=L.key(i);if(k.indexOf('sd-')===0&&K.indexOf(k)<0)a.push(k)}return a}
+function enter(){var b={};ks().forEach(function(k){b[k]=L.getItem(k)});L.setItem('sd-bak',JSON.stringify(b));ks().forEach(function(k){L.removeItem(k)});L.setItem('sd-gm','1');location.href='index.html'}
+function leave(){var b={};try{b=JSON.parse(L.getItem('sd-bak'))||{}}catch(e){}ks().forEach(function(k){L.removeItem(k)});Object.keys(b).forEach(function(k){L.setItem(k,b[k])});L.removeItem('sd-bak');L.removeItem('sd-gm');location.href='index.html'}
+var q=new URLSearchParams(location.search);
+if(q.get('guest')==='1'&&L.getItem('sd-gm')!=='1'){enter();return}
+if(q.get('guest')==='0'&&L.getItem('sd-gm')==='1'){leave();return}
+var gs=document.getElementById('gst');if(gs)gs.onclick=function(e){e.preventDefault();if(L.getItem('sd-gm')==='1'){leave()}else enter()};
+if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textContent='.gbn{position:fixed;top:54px;inset-inline:0;margin:auto;width:max-content;max-width:92vw;z-index:70;background:#fbbf24;color:#1a1a1a;border-radius:999px;padding:4px 14px;font:700 12px/1.6 inherit;font-family:inherit;border:0}@media print{.gbn{display:none}}';document.head.appendChild(st);var b=document.createElement('button');b.type='button';b.className='gbn';b.textContent='وضع زائر جديد (التقدم لن يُحفظ) · اضغط للخروج';b.onclick=leave;document.body.appendChild(b)}
+}catch(e){}})();
