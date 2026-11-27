@@ -372,3 +372,10 @@ html[data-theme=light]
 .in .qa.mc::before,.in .qa:has(.sh)::before{content:"سؤال";position:absolute;top:8px;inset-inline-start:14px;font-size:12px;font-weight:800;color:#0a0f1f;background:#fbbf24;border-radius:8px;padding:0 10px;line-height:20px}
 .in .qa.mc .q,.in .qa:has(.sh) .q{color:#fde68a;font-size:17px}
 .in h3{margin:22px 0 4px;font-size:16px;color:#bfdbfe;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:6px}
+/* v22 features */
+.pinb{position:absolute;top:6px;inset-inline-end:10px;background:none;border:0;color:#fbbf24;font-size:22px;line-height:1;min-width:44px;min-height:30px;cursor:pointer}
+.fabs{position:fixed;bottom:12px;inset-inline-start:10px;z-index:50;display:flex;gap:6px;direction:rtl}
+.fabs a,.fabs button{min-height:40px;min-width:40px;padding:0 12px;border-radius:20px;border:1px solid rgba(94,234,212,.5);background:rgba(8,22,43,.92);color:#5eead4;font:700 13px/38px inherit;font-family:inherit;text-decoration:none;cursor:pointer;text-align:center}
+.ownb{position:fixed;top:8px;inset-inline-start:8px;z-index:50;display:flex;gap:6px}.ownb a{font-size:11px;padding:2px 8px;border-radius:10px;background:#fbbf24;color:#0a0f1f;text-decoration:none;font-weight:800}
+.bnr{border:1px solid #fbbf24;background:rgba(251,191,36,.1);color:#fde68a;border-radius:14px;padding:10px 14px;margin:0 0 12px;text-align:center}
+@media print{.fabs,.ownb,.nav,.modes,.pinb,.ownerstrip,.ownstrip,.sh,.wab{display:none!important}body,html{background:#fff!important;color:#000!important}.qa{break-inside:avoid;background:#fff!important;border:1px solid #888!important;color:#000!important}.qa *{color:#000!important}.a[hidden],.sx[hidden]{display:block!important}.hero{background:#fff!important;color:#000!important}}
