@@ -364,3 +364,11 @@ html[data-theme=light]
 .own2{font-size:13px;font-weight:700;color:#ffd96b;letter-spacing:.4px}html[data-theme=light] .own2{color:#7a4b00}footer .own2{display:inline-block;margin-bottom:6px}
 .ownstrip{position:sticky;top:6px;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(90deg,rgba(40,30,5,.92),rgba(30,22,4,.92))}html[data-theme=light] .ownstrip{background:#fff4d6}.ownstrip span{letter-spacing:.4px}
 .warn.foot{background:none;padding:0;margin-top:30px;text-align:center}.warn.foot p{font-size:11px;color:#7d86a3;opacity:.7}
+/* v21 unified split: explanation cards vs question cards */
+.in .qa:not(.mc):not(:has(.sh)):not(.es){position:relative;margin:12px 0!important;padding:34px 16px 14px!important;border:1px solid rgba(94,234,212,.35)!important;border-inline-start:7px solid #5eead4!important;border-radius:16px!important;background:linear-gradient(160deg,rgba(15,118,110,.22),rgba(11,42,74,.35))!important;line-height:1.95}
+.in .qa:not(.mc):not(:has(.sh)):not(.es)::before{content:"شرح";position:absolute;top:8px;inset-inline-start:14px;font-size:12px;font-weight:800;color:#08162b;background:#5eead4;border-radius:8px;padding:0 10px;line-height:20px}
+.in .qa:not(.mc):not(:has(.sh)):not(.es) .q{color:#5eead4;font-size:17px}
+.in .qa.mc,.in .qa:has(.sh){position:relative;margin:14px 0!important;padding:36px 16px 14px!important;border:2px dashed #fbbf24!important;border-radius:16px!important;background:rgba(251,191,36,.07)!important}
+.in .qa.mc::before,.in .qa:has(.sh)::before{content:"سؤال";position:absolute;top:8px;inset-inline-start:14px;font-size:12px;font-weight:800;color:#0a0f1f;background:#fbbf24;border-radius:8px;padding:0 10px;line-height:20px}
+.in .qa.mc .q,.in .qa:has(.sh) .q{color:#fde68a;font-size:17px}
+.in h3{margin:22px 0 4px;font-size:16px;color:#bfdbfe;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:6px}
