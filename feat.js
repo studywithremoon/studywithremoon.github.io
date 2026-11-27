@@ -98,21 +98,21 @@ if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textConte
 
 // ownership + light copy deterrent (owner device exempt)
 (function(){try{var L=localStorage;var P=(location.pathname.split('/').pop()||'index.html');
-var m=document.createElement('meta');m.name='copyright';m.content='© Remoon Esam. All rights reserved. Not for copying or redistribution.';document.head.appendChild(m);
+var m=document.createElement('meta');m.name='copyright';m.content='All rights reserved. Not for copying or redistribution. sig:sw-7f3a9c1e-4b2d';document.head.appendChild(m);
 var r=document.createElement('meta');r.name='robots';r.content='noai, noimageai';document.head.appendChild(r);
 document.documentElement.setAttribute('data-own','studywithremoon\u200b\u200c\u200d');
 if(L.getItem('sd-owner')==='1'&&!sessionStorage.getItem('sd-vv'))return;
 if(/^(contact|dash)/.test(P))return;
 var s=document.createElement('style');s.textContent='main{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none}';document.head.appendChild(s);
-document.addEventListener('copy',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;try{e.clipboardData.setData('text/plain','© Remoon Esam · studywithremoon.github.io');e.preventDefault()}catch(x){}});
+document.addEventListener('copy',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;try{e.clipboardData.setData('text/plain','© studywithremoon.github.io');e.preventDefault()}catch(x){}});
 document.addEventListener('contextmenu',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;e.preventDefault()});
 document.addEventListener('dragstart',function(e){e.preventDefault()});
-try{console.log('%cStudy With Remoon','font:700 18px sans-serif;color:#5eead4','\n© Remoon Esam. All rights reserved. This site and its content may not be copied or cloned.')}catch(x){}
+try{console.log('%cAll rights reserved','font:700 18px sans-serif;color:#5eead4','\nAll rights reserved. This site and its content may not be copied or cloned.')}catch(x){}
 }catch(e){}})();
 
 // sticker ownership marker + no drag/save
 (function(){try{var s=document.createElement('style');s.textContent='.stk{pointer-events:none;-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}';document.head.appendChild(s);
-new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.tagName==='IMG'){n.draggable=false;n.setAttribute('data-by','Remoon Esam');n.setAttribute('alt','')}})})}).observe(document.body||document.documentElement,{childList:true,subtree:true})}catch(e){}})();
+new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.tagName==='IMG'){n.draggable=false;n.setAttribute('data-sig','sw-7f3a9c1e');n.setAttribute('alt','')}})})}).observe(document.body||document.documentElement,{childList:true,subtree:true})}catch(e){}})();
 
 // owner-only layer (hidden for visitors)
 (function(){try{var L=localStorage;if(L.getItem('sd-owner')!=='1')return;var vv=!!sessionStorage.getItem('sd-vv');
