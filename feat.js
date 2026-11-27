@@ -71,10 +71,12 @@ setTimeout(function(){var d=document.createElement('div');d.className='sc';d.inn
 (function(){var P=location.pathname.split('/').pop();if(P===''||P==='index.html'){var s=document.createElement('script');s.src='welcome.js?v=2';s.defer=true;document.body.appendChild(s)}})();
 
 // stickers
-window.SD_STKLOAD=function(cb){if(window.SD_STK)return cb(window.SD_STK);var s=document.createElement('script');s.src='stickers.js?v=2';s.onload=function(){cb(window.SD_STK)};document.body.appendChild(s)};
+window.SD_STKLOAD=function(cb){var go=function(){if(window.SD_STK&&window.SD_STK2){if(window.SD_STK.length<7)window.SD_STK=window.SD_STK.concat(window.SD_STK2);return cb(window.SD_STK)}};function ld(src,flag){if(window[flag])return go();var s=document.createElement('script');s.src=src;s.onload=function(){go()};document.body.appendChild(s)}
+if(window.SD_STK&&window.SD_STK2)return go();var n=0;function one(src,flag){if(window[flag]){if(++n===2)go();return}var s=document.createElement('script');s.src=src;s.onload=function(){if(++n===2)go()};document.body.appendChild(s)}one('stickers.js?v=2','SD_STK');one('stickers2.js?v=1','SD_STK2')};
+window.SD_PICK=function(a,cat){var L=cat==='pos'?[0,1,4,5,8]:cat==='sur'?[9,5,4,0,1,3,6,7,8]:[2,3,6,7];window.SD_ri=(window.SD_ri||Math.floor(Math.random()*9))+1;return a[L[window.SD_ri%L.length]]};
 (function(){var st=document.createElement('style');st.textContent='.stk{position:fixed;bottom:72px;inset-inline-end:10px;width:92px;height:92px;object-fit:cover;border-radius:18px;border:2px solid #fbbf24;z-index:60;pointer-events:none;animation:stkp .35s cubic-bezier(.2,1.5,.4,1) both,stko .4s 2.1s ease forwards;box-shadow:0 6px 18px rgba(0,0,0,.4)}.stki{width:84px;height:84px;object-fit:cover;border-radius:16px;border:2px solid #fbbf24;display:block;margin:10px auto 0}@keyframes stkp{from{transform:scale(.2) rotate(-12deg);opacity:0}to{transform:none;opacity:1}}@keyframes stko{to{opacity:0;transform:translateY(12px)}}@media print{.stk{display:none}}';document.head.appendChild(st);
-window.SD_TOAST=function(i){SD_STKLOAD(function(a){var m=document.createElement('img');m.className='stk';m.alt='';m.src=a[i];document.body.appendChild(m);setTimeout(function(){m.remove()},2600)})};
-document.addEventListener('click',function(e){var b=e.target.closest('.op');if(!b||!b.parentNode.classList.contains('mc')||b.parentNode.closest('#pr'))return;setTimeout(function(){if(b.classList.contains('ok')){SD_TOAST(0)}else if(b.classList.contains('no')){SD_TOAST(3)}},60)});
+window.SD_TOAST=function(i){SD_STKLOAD(function(a){var m=document.createElement('img');m.className='stk';m.alt='';m.src=typeof i==='string'?SD_PICK(a,i):a[i];document.body.appendChild(m);setTimeout(function(){m.remove()},2600)})};
+document.addEventListener('click',function(e){var b=e.target.closest('.op');if(!b||!b.parentNode.classList.contains('mc')||b.parentNode.closest('#pr'))return;setTimeout(function(){if(b.classList.contains('ok')){SD_TOAST('pos')}else if(b.classList.contains('no')){SD_TOAST('neg')}},60)});
 })();
 
 // guest mode: clean slate, progress backed up and restored on exit
@@ -88,3 +90,6 @@ if(q.get('guest')==='0'&&L.getItem('sd-gm')==='1'){leave();return}
 var gs=document.getElementById('gst');if(gs)gs.onclick=function(e){e.preventDefault();if(L.getItem('sd-gm')==='1'){leave()}else enter()};
 if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textContent='.gbn{position:fixed;top:54px;inset-inline:0;margin:auto;width:max-content;max-width:92vw;z-index:70;background:#fbbf24;color:#1a1a1a;border-radius:999px;padding:4px 14px;font:700 12px/1.6 inherit;font-family:inherit;border:0}@media print{.gbn{display:none}}';document.head.appendChild(st);var b=document.createElement('button');b.type='button';b.className='gbn';b.textContent='وضع زائر جديد (التقدم لن يُحفظ) · اضغط للخروج';b.onclick=leave;document.body.appendChild(b)}
 }catch(e){}})();
+
+// occasional surprise sticker while scrolling (rate limited, never on practice/game pages)
+(function(){try{var P=location.pathname.split('/').pop()||'index.html';if(/^(practice|game|run)/.test(P)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var lastY=scrollY,acc=0,lastT=Date.now()-20000;addEventListener('scroll',function(){acc+=Math.abs(scrollY-lastY);lastY=scrollY;if(acc>900&&Date.now()-lastT>50000&&!document.querySelector('.wl,.stk')&&Math.random()<.35){acc=0;lastT=Date.now();SD_TOAST('sur')}else if(acc>900)acc=0},{passive:true})}catch(e){}})();
