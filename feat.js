@@ -42,7 +42,7 @@ document.getElementById('fa1').onclick=function(){fs=Math.min(150,fs+10);documen
 document.getElementById('fa2').onclick=function(){fs=Math.max(80,fs-10);document.documentElement.style.fontSize=fs+'%';s('sd-fs',fs)};
 document.getElementById('fp').onclick=function(){window.print()};
 // owner badge
-if(L.getItem('sd-owner')==='1'){var o=document.createElement('div');o.className='ownb';o.innerHTML='<a href="dash.html">وضع المالك</a><a href="https://studywithremoon.goatcounter.com" target="_blank" rel="noopener">الإحصاءات</a>';document.body.appendChild(o)}
+if(L.getItem('sd-owner')==='1'){var o=document.createElement('div');o.className='ownx';o.innerHTML='<a href="dash.html">وضع المالك</a><a href="https://studywithremoon.goatcounter.com" target="_blank" rel="noopener">الإحصاءات</a>';document.body.appendChild(o)}
 // owner panel settings: banner/section hide
 var cfg=g('sd-owncfg',null);
 if(cfg&&cfg.banner&&P==='index.html'){var bn=document.createElement('div');bn.className='bnr';bn.textContent=cfg.banner;var m=document.querySelector('main');if(m)m.insertBefore(bn,m.firstChild)}
