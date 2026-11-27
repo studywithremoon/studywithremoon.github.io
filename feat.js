@@ -95,3 +95,17 @@ if(L.getItem('sd-gm')==='1'){var st=document.createElement('style');st.textConte
 (function(){try{var P=location.pathname.split('/').pop()||'index.html';if(/^(practice|run)/.test(P)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var lastY=scrollY,acc=0,lastT=Date.now()-20000;addEventListener('scroll',function(){acc+=Math.abs(scrollY-lastY);lastY=scrollY;if(acc>900&&Date.now()-lastT>50000&&!document.querySelector('.wl,.stk')&&Math.random()<.35){acc=0;lastT=Date.now();SD_TOAST('sur')}else if(acc>900)acc=0},{passive:true})}catch(e){}})();
 
 (function(){function c(){var s=document.querySelector('.ownstrip span');if(s&&!s.dataset.cr){s.dataset.cr=1;s.setAttribute('dir','rtl');s.innerHTML='<i class="tw">✨</i> إعداد Remoon Esam <i class="tw">✨</i>';if(!document.getElementById('twk')){var st=document.createElement('style');st.id='twk';st.textContent='.tw{font-style:normal;display:inline-block;animation:twk 2.4s ease-in-out infinite;filter:saturate(1.1)}@keyframes twk{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}@media(prefers-reduced-motion:reduce){.tw{animation:none}}';document.head.appendChild(st)}}}c();document.addEventListener('DOMContentLoaded',c);setTimeout(c,600)})();
+
+// ownership + light copy deterrent (owner device exempt)
+(function(){try{var L=localStorage;var P=(location.pathname.split('/').pop()||'index.html');
+var m=document.createElement('meta');m.name='copyright';m.content='© Remoon Esam. All rights reserved. Not for copying or redistribution.';document.head.appendChild(m);
+var r=document.createElement('meta');r.name='robots';r.content='noai, noimageai';document.head.appendChild(r);
+document.documentElement.setAttribute('data-own','studywithremoon\u200b\u200c\u200d');
+if(L.getItem('sd-owner')==='1')return;
+if(/^(contact|dash)/.test(P))return;
+var s=document.createElement('style');s.textContent='main{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none}';document.head.appendChild(s);
+document.addEventListener('copy',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;try{e.clipboardData.setData('text/plain','© Remoon Esam · studywithremoon.github.io');e.preventDefault()}catch(x){}});
+document.addEventListener('contextmenu',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName))return;e.preventDefault()});
+document.addEventListener('dragstart',function(e){e.preventDefault()});
+try{console.log('%cStudy With Remoon','font:700 18px sans-serif;color:#5eead4','\n© Remoon Esam. All rights reserved. This site and its content may not be copied or cloned.')}catch(x){}
+}catch(e){}})();
