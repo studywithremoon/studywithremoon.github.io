@@ -109,3 +109,7 @@ document.addEventListener('contextmenu',function(e){var t=e.target;if(t&&/^(INPU
 document.addEventListener('dragstart',function(e){e.preventDefault()});
 try{console.log('%cStudy With Remoon','font:700 18px sans-serif;color:#5eead4','\n© Remoon Esam. All rights reserved. This site and its content may not be copied or cloned.')}catch(x){}
 }catch(e){}})();
+
+// sticker ownership marker + no drag/save
+(function(){try{var s=document.createElement('style');s.textContent='.stk{pointer-events:none;-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}';document.head.appendChild(s);
+new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.tagName==='IMG'){n.draggable=false;n.setAttribute('data-by','Remoon Esam');n.setAttribute('alt','')}})})}).observe(document.body||document.documentElement,{childList:true,subtree:true})}catch(e){}})();
