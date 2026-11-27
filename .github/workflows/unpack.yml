@@ -1,0 +1,17 @@
+name: unpack
+on: [push]
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          unzip -o 4-pub1.zip
+          rm 4-pub1.zip .github/workflows/unpack.yml
+          git config user.email "bot@example.com"
+          git config user.name "bot"
+          git add -A
+          git commit -m "unpack"
+          git push
