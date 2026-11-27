@@ -92,7 +92,7 @@ a.cc strong{color:var(--a);font-size:17px;display:block}a.cc span{color:#bfdbfe;
 .ah{text-align:center;font-size:12.5px;opacity:.75;margin:8px 0}
 .am{text-align:center;min-height:26px;margin:6px 0 4px;font-weight:700}
 .ae{margin:6px 0;padding:10px 14px;border-radius:12px;border:1px dashed #fbbf24;font-size:14.5px;line-height:1.9}
-.rb{display:block;margin:10px auto;min-height:44px;padding:8px 22px;border-radius:12px;border:1px solid #fbbf24;background:transparent;color:#fde68a;font:inherit;font-weight:700;cursor:pointer}</style>
+.rb[hidden],.ae[hidden]{display:none}.rb{display:block;margin:10px auto;min-height:44px;padding:8px 22px;border-radius:12px;border:1px solid #fbbf24;background:transparent;color:#fde68a;font:inherit;font-weight:700;cursor:pointer}</style>
 <script>
 (function(){
 var Q=[],cur=null,ok=0,n=0,busy=false,ALL=[],drag=null,O={x:0,y:0};
@@ -115,10 +115,10 @@ var T=$("a-t");T.innerHTML="";o.forEach(function(x){var d=document.createElement
 A.getAnimations().forEach(function(x){x.cancel()});A.style.opacity=1;origin()}
 function vec(e){var r=R.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
 R.addEventListener("pointerdown",function(e){if(busy)return;drag=vec(e);try{R.setPointerCapture(e.pointerId)}catch(x){}e.preventDefault()});
-R.addEventListener("pointermove",function(e){if(!drag||busy)return;var p=vec(e);var dx=O.x-p.x,dy=O.y-p.y,L=Math.hypot(dx,dy);if(L<8)return;var pull=Math.min(L,110);var ang=Math.atan2(dx,dy)*180/Math.PI;
-if(dy<0){G.style.display="none";return}
+R.addEventListener("pointermove",function(e){if(!drag||busy)return;var p=vec(e);var dx=O.x-p.x,dy=p.y-O.y,L=Math.hypot(dx,dy);if(L<8)return;var pull=Math.min(L,110);var ang=Math.atan2(dx,dy)*180/Math.PI;
+if(dy<=0){G.style.display="none";return}
 place(ang,pull*.35);G.style.display="block";var len=120+pull*4.5;G.style.left=O.x+"px";G.style.top=(O.y-len)+"px";G.style.height=len+"px";G.style.transform="rotate("+ang+"deg)";G.style.transformOrigin="50% 100%"});
-function end(e){if(!drag||busy){drag=null;return}var p=vec(e);drag=null;G.style.display="none";var dx=O.x-p.x,dy=O.y-p.y,L=Math.hypot(dx,dy);
+function end(e){if(!drag||busy){drag=null;return}var p=vec(e);drag=null;G.style.display="none";var dx=O.x-p.x,dy=p.y-O.y,L=Math.hypot(dx,dy);
 if(L<28||dy<=0){place(0,0);return}
 fire(dx,dy,Math.min(L,110))}
 R.addEventListener("pointerup",end);R.addEventListener("pointercancel",function(){drag=null;G.style.display="none";place(0,0)});
