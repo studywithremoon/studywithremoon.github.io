@@ -23,7 +23,7 @@ var bt=document.createElement('div');bt.className='bt';var nx=document.createEle
 w.appendChild(box);w.appendChild(dots);dots.style.display='none';w.appendChild(bt);
 var k=-1;function show(){var sl=box.querySelectorAll('.sl');sl.forEach(function(x,j){x.classList.toggle('on',j===k)});dots.querySelectorAll('i').forEach(function(x,j){x.classList.toggle('on',j===k)})}
 function done(){L.setItem('sd-welcome','1');w.classList.add('out');setTimeout(function(){w.remove();css.remove&&0},450)}
-nx.onclick=function(){if(k===-1){lw.style.display='none';t.style.display='none';box.style.display='flex';dots.style.display='flex';k=0;nx.textContent='التالي';show();return}if(k<S.length-2){k++;show();if(k===S.length-2)nx.textContent='يلا نبدأ'}else done()};
+nx.onclick=function(){if(k===-1){wi.style.display='none';lw.style.display='none';t.style.display='none';box.style.display='flex';dots.style.display='flex';k=0;nx.textContent='التالي';show();return}if(k<S.length-2){k++;show();if(k===S.length-2)nx.textContent='يلا نبدأ'}else done()};
 sk.onclick=done;
 document.body.appendChild(w);
 })();
