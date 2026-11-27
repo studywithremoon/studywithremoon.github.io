@@ -48,3 +48,20 @@ var cfg=g('sd-owncfg',null);
 if(cfg&&cfg.banner&&P==='index.html'){var bn=document.createElement('div');bn.className='bnr';bn.textContent=cfg.banner;var m=document.querySelector('main');if(m)m.insertBefore(bn,m.firstChild)}
 if(cfg&&cfg.accent){document.documentElement.style.setProperty('--owna',cfg.accent)}
 })();
+
+// PWA + extras
+(function(){try{
+var h=document.head;function lk(r,hr,x){var l=document.createElement('link');l.rel=r;l.href=hr;if(x)l.type=x;h.appendChild(l)}
+if(!document.querySelector('link[rel=manifest]'))lk('manifest','manifest.webmanifest');
+lk('apple-touch-icon','icon.svg');
+if(!document.querySelector('meta[name=theme-color]')){var m=document.createElement('meta');m.name='theme-color';m.content='#0a0f1f';h.appendChild(m)}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+}catch(e){}
+// install button
+var dp;window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;var f=document.querySelector('.fabs');if(f&&!document.getElementById('fa-inst')){var b=document.createElement('button');b.type='button';b.id='fa-inst';b.textContent='تثبيت';b.onclick=function(){dp.prompt();b.remove()};f.appendChild(b)}});
+// cheat sheet print
+var f2=document.querySelector('.fabs');if(f2&&/^(pf|corp|crisis|law|ops)\d/.test(location.pathname.split('/').pop())){var cb=document.createElement('button');cb.type='button';cb.textContent='ورقة مراجعة';cb.onclick=function(){document.body.classList.add('cheat');window.print();setTimeout(function(){document.body.classList.remove('cheat')},500)};f2.appendChild(cb)}
+// essay self-check
+document.addEventListener('click',function(e){var h=e.target.closest('.sh');if(!h)return;var q=h.parentNode;if(q.querySelector('.sc'))return;var P=location.pathname.split('/').pop()||'index.html';var all=[].slice.call(document.querySelectorAll('.qa'));var key=P+'#'+all.indexOf(q);
+setTimeout(function(){var d=document.createElement('div');d.className='sc';d.innerHTML='<span>قيّم نفسك:</span>';[['جاوبتها صح',1],['محتاج أراجعها',0]].forEach(function(x){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.onclick=function(){var sf=JSON.parse(localStorage.getItem('sd-self')||'{}');sf[key]=x[1];localStorage.setItem('sd-self',JSON.stringify(sf));var w=JSON.parse(localStorage.getItem('sd-wrong')||'{}');if(x[1])delete w[key];else w[key]=(q.querySelector('.q').textContent||'').slice(0,90);localStorage.setItem('sd-wrong',JSON.stringify(w));d.innerHTML='<span>'+(x[1]?'تمام، كمّل':'اتسجلت للمراجعة')+'</span>'};d.appendChild(b)});q.appendChild(d)},0)});
+})();
