@@ -82,4 +82,38 @@ a.cc strong{color:var(--a);font-size:17px;display:block}a.cc span{color:#bfdbfe;
 cf.addEventListener('submit',async ev=>{ev.preventDefault();const n=cf.name.value.trim(),m=cf.message.value.trim();if(!n||!m){cr.textContent='اكتب اسمك ورسالتك الأول.';return}
 cs.disabled=true;cr.textContent='جاري الإرسال...';
 try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'d77d8d0a-37c9-4289-ba7a-69b88a626fad',subject:'رسالة جديدة من موقع المذاكرة',from_name:'موقع المذاكرة',name:n,contact:cf.contact.value.trim()||'غير مذكور',message:m,botcheck:cf.botcheck.checked})});const j=await r.json();
-if(j.success){cr.textContent='تم الإرسال. شكرا لك!';cf.reset()}else{cr.textContent='ماتبعتش. جرب تاني بعد شوية.'}}catch(e){cr.textContent='ماتبعتش. اتأكد من النت وجرب تاني.'}cs.disabled=false})})()</script><script>document.addEventListener("click",function(e){var b=e.target.closest(".op");if(b){var q=b.parentNode;if(q.dataset.done)return;q.dataset.done=1;var a=+q.dataset.ans;q.querySelectorAll(".op").forEach(function(x){var i=+x.dataset.i;if(i===a)x.classList.add("ok");else if(x===b)x.classList.add("no")});q.querySelector(".a").hidden=false;return}var m=e.target.closest(".md");if(m){document.querySelectorAll(".md").forEach(function(x){x.classList.remove("on")});m.classList.add("on");document.querySelectorAll(".sx").forEach(function(x){x.hidden=x.id!==m.dataset.t});return}var s=e.target.closest(".sh");if(s){s.nextElementSibling.hidden=false;s.hidden=true}});</script><p class="foot">للمراجعة والتدريب</p></main></div><script src="feat.js?v=7" defer></script><script data-goatcounter="https://studywithremoon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
+if(j.success){cr.textContent='تم الإرسال. شكرا لك!';cf.reset()}else{cr.textContent='ماتبعتش. جرب تاني بعد شوية.'}}catch(e){cr.textContent='ماتبعتش. اتأكد من النت وجرب تاني.'}cs.disabled=false})})()</script><script>document.addEventListener("click",function(e){var b=e.target.closest(".op");if(b){var q=b.parentNode;if(q.dataset.done)return;q.dataset.done=1;var a=+q.dataset.ans;q.querySelectorAll(".op").forEach(function(x){var i=+x.dataset.i;if(i===a)x.classList.add("ok");else if(x===b)x.classList.add("no")});q.querySelector(".a").hidden=false;return}var m=e.target.closest(".md");if(m){document.querySelectorAll(".md").forEach(function(x){x.classList.remove("on")});m.classList.add("on");document.querySelectorAll(".sx").forEach(function(x){x.hidden=x.id!==m.dataset.t});return}var s=e.target.closest(".sh");if(s){s.nextElementSibling.hidden=false;s.hidden=true}});</script><p class="foot">للمراجعة والتدريب</p></main></div><script src="feat.js?v=7" defer></script><script data-goatcounter="https://studywithremoon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><style>
+@keyframes cup{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes shine{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(260%) skewX(-20deg)}}
+@keyframes shk{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(94,234,212,.55)}100%{box-shadow:0 0 0 22px rgba(94,234,212,0)}}
+@keyframes flo{50%{transform:translateY(-6px)}}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes drw{to{stroke-dashoffset:0}}
+@keyframes cf{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rt));opacity:0}}
+.ct .cbox{animation:cup .7s cubic-bezier(.2,.8,.2,1) both}.ct .cbox:nth-child(2){animation-delay:.18s}
+.hero.s .logo{animation:flo 3.2s ease-in-out infinite}
+#cf input,#cf textarea{transition:border-color .25s,box-shadow .25s,transform .25s}
+#cf input:focus,#cf textarea:focus{outline:0;border-color:#5eead4;box-shadow:0 0 0 3px rgba(94,234,212,.28),0 8px 24px rgba(56,189,248,.16);transform:translateY(-2px)}
+#cs{position:relative;overflow:hidden;background:linear-gradient(135deg,#fbbf24,#5eead4);color:#0a0f1f;font-weight:800;font-size:16px;transition:transform .2s,filter .2s}
+#cs:active{transform:scale(.96)}#cs:hover{filter:brightness(1.08)}
+#cs::after{content:"";position:absolute;top:0;left:0;width:40%;height:100%;background:rgba(255,255,255,.45);animation:shine 3.4s ease-in-out infinite}
+#cs[disabled]{opacity:.7}
+.wab{animation:ring 2.2s ease-out infinite}
+.cnt{font-size:12px;opacity:.65;text-align:left;margin-top:-6px}
+#cf.shk{animation:shk .45s}
+.cov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(5,10,25,.82);backdrop-filter:blur(6px);animation:cup .35s both}
+.cov .cd{text-align:center;padding:26px 30px;border-radius:24px;border:1px solid rgba(94,234,212,.5);background:linear-gradient(160deg,#0f2a44,#0a1428);max-width:86vw;animation:pop .6s both}
+.cov svg{width:84px;height:84px}.cov circle,.cov path{fill:none;stroke:#5eead4;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:200;animation:drw .7s .25s forwards}.cov path{stroke:#fde68a;stroke-dasharray:60;stroke-dashoffset:60;animation-delay:.7s}
+.cov h2{margin:10px 0 4px;color:#fde68a}.cov p{margin:0 0 10px;opacity:.85}.cov img{width:96px;height:96px;object-fit:cover;border-radius:18px;border:2px solid #fbbf24;margin-top:6px}
+.cov i{position:fixed;top:45%;left:50%;width:9px;height:14px;border-radius:2px;animation:cf 1.6s ease-out forwards}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style><script>(function(){var cf=document.getElementById('cf'),cr=document.getElementById('cr'),cm=document.getElementById('cm');if(!cf)return;
+var ct=document.createElement('div');ct.className='cnt';ct.textContent='0 / 2000';cm.after(ct);cm.addEventListener('input',function(){ct.textContent=cm.value.length+' / 2000'});
+var C=['#fbbf24','#5eead4','#38bdf8','#ffffff','#fde68a'];
+function done(){var o=document.createElement('div');o.className='cov';o.innerHTML='<div class="cd"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/><path d="M30 52l14 14 28-30"/></svg><h2>وصلت رسالتك</h2><p>شكرا لك!</p></div>';document.body.appendChild(o);
+for(var k=0;k<42;k++){var f=document.createElement('i');f.style.background=C[k%5];var a=Math.random()*6.28,d=140+Math.random()*190;f.style.setProperty('--dx',Math.cos(a)*d+'px');f.style.setProperty('--dy',Math.sin(a)*d+'px');f.style.setProperty('--rt',(Math.random()*720-360)+'deg');f.style.animationDelay=Math.random()*.25+'s';o.appendChild(f)}
+if(window.SD_STKLOAD&&window.SD_PICK){SD_STKLOAD(function(a){var m=document.createElement('img');m.alt='';m.src=SD_PICK(a,'win');o.querySelector('.cd').appendChild(m)})}
+var x=function(){o.remove()};o.onclick=x;setTimeout(x,4200)}
+new MutationObserver(function(){var t=cr.textContent;if(t.indexOf('تم الإرسال')>-1)done();else if(t.indexOf('اكتب اسمك')>-1){cf.classList.remove('shk');void cf.offsetWidth;cf.classList.add('shk')}}).observe(cr,{childList:true,characterData:true,subtree:true})})();</script>
+</body></html>
