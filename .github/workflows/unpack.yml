@@ -1,0 +1,21 @@
+name: unpack
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p /tmp/sz && unzip -o 1-maintenance-release.zip -d /tmp/sz && cp -r /tmp/sz/. . && rm -f 1-maintenance-release.zip
+          rm -rf '.github/workflows/jobs:  unpack:    runs-on: ubuntu-latest    steps:      - uses: actions'
+          rm -f .github/workflows/unpack.yml
+      - run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "unpack maintenance release" || true
+          git push
