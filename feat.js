@@ -227,3 +227,14 @@ document.addEventListener('DOMContentLoaded',function(){
   if(f&&f.parentNode)f.parentNode.insertBefore(d,f.nextSibling);else document.body.appendChild(d);
 });
 })();
+
+// copy protection (owner-approved 2026-11): deter casual copying; inputs stay editable
+try{
+var _st=document.createElement('style');
+_st.textContent='body{-webkit-user-select:none;user-select:none}input,textarea,[contenteditable],.pagefind-ui,.pagefind-ui *{-webkit-user-select:text;user-select:text}';
+document.head.appendChild(_st);
+function _cp(e){var t=e.target;if(t&&t.closest&&t.closest('input,textarea,[contenteditable]'))return;e.preventDefault()}
+document.addEventListener('contextmenu',_cp);
+document.addEventListener('copy',_cp);
+document.addEventListener('cut',_cp);
+}catch(e){}
