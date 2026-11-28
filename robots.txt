@@ -16,3 +16,4 @@ User-agent: Bytespider
 Disallow: /
 User-agent: *
 Allow: /
+Sitemap: https://studywithremoon.github.io/sitemap.xml

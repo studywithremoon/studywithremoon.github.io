@@ -1,4 +1,4 @@
-<!doctype html><html lang='ar' dir='rtl'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>بحث شامل</title><meta name='description' content='ابحث في كل الأسئلة والتعريفات والدروس'><meta name='theme-color' content='#0a0f1f'><link rel='stylesheet' href='app.css?v=24'><link rel='stylesheet' href='font.css?v=1'><script>try{if(localStorage.getItem("fr2-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script><style>
+<!doctype html><html lang='ar' dir='rtl'><head><meta charset='utf-8'><meta name="author" content="Remoon Esam"><meta name='viewport' content='width=device-width,initial-scale=1'><title>بحث شامل</title><meta name="description" content="ابحث في كل الأسئلة والتعريفات والدروس ونص الملخصات"><meta name='description' content='ابحث في كل الأسئلة والتعريفات والدروس'><meta name='theme-color' content='#0a0f1f'><link rel='stylesheet' href='app.css?v=24'><link rel='stylesheet' href='font.css?v=1'><script>try{if(localStorage.getItem("fr2-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script><style>.nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:8px;-webkit-overflow-scrolling:touch}.nav a{flex:none;text-decoration:none;color:#bfdbfe;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:14px;min-height:40px;display:flex;align-items:center;white-space:nowrap}
 .hero{padding:24px 20px;border-radius:20px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#fbbf24 0%,#0f766e 60%,#0b2a4a 100%);display:flex;flex-direction:column;gap:12px}
 .hero h1{margin:0;font-size:24px}.hero p{margin:0;opacity:.92}
 .sbox{margin:14px 0;padding:14px;border:1px solid #fde68a;border-radius:14px;background:rgba(251,191,36,.06)}
@@ -9,11 +9,15 @@
 mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px;padding:0 1px}
 .foot{font-size:11px;opacity:.7;text-align:center;margin:18px 0}
 .none{padding:18px;text-align:center;opacity:.75}
-</style></head><body style="--a:#fde68a"><div class="wrap"><span class="r" aria-hidden="true">R</span><main>
+</style><link href="pagefind/pagefind-ui.css" rel="stylesheet"><style>.pagefind-ui{--pagefind-ui-text:#e5e7eb;--pagefind-ui-background:#0b1730;--pagefind-ui-border:rgba(253,230,138,.4);--pagefind-ui-tag:#132a4a;--pagefind-ui-primary:#fbbf24;--pagefind-ui-border-radius:12px;--pagefind-ui-font:inherit}.pagefind-ui__result-title{color:#fde68a}</style></head><body style="--a:#fde68a"><div class="wrap"><span class="r" aria-hidden="true" data-pagefind-ignore>R</span><main>
 <nav class="nav" aria-label="التنقل"><a href="index.html">الرئيسية</a><a href="dash.html">لوحتي</a><a href="cards.html">بطاقات التعريفات</a><a href="mock.html">امتحان تجريبي</a></nav>
 <div class="hero"><h1>بحث شامل</h1><p>ابحث بأي كلمة وهتلاقيها في كل الأسئلة والتعريفات والدروس في مكان واحد</p></div>
 <div class="sbox"><input id="q" type="search" placeholder="اكتب كلمة البحث..." autocomplete="off"></div>
 <div id="out"></div>
+<div class="grp" style="margin-top:26px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px">أو دور في نص كل الصفحات والملخصات:</div>
+<div id="pfind"></div>
+<script src="pagefind/pagefind-ui.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){new PagefindUI({element:"#pfind",showSubResults:true,bundlePath:"/pagefind/",translations:{placeholder:"ابحث في نص الملخصات...",clear_search:"مسح",load_more:"نتايج أكتر",search_label:"بحث في الموقع",filters_label:"فلاتر",zero_results:"مفيش نتايج لـ [SEARCH_TERM]",many_results:"[COUNT] نتيجة لـ [SEARCH_TERM]",one_result:"نتيجة واحدة لـ [SEARCH_TERM]",alt_search:"مفيش نتايج لـ [SEARCH_TERM]... جرّب [DIFFERENT_TERM]",search_suggestion:"مفيش نتايج لـ [SEARCH_TERM]... جرّب واحدة من دول:",searching:"بيدور على [SEARCH_TERM]..."}});});</script>
 <p class="foot">للمراجعة والتدريب</p></main></div>
 <script>(function(){
 var $=function(i){return document.getElementById(i)};
