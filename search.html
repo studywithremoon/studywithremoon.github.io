@@ -1,25 +1,47 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الموقع متوقف مؤقتًا</title>
-<link rel="icon" href="/icon.svg" type="image/svg+xml">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0f1f;color:#e5e7eb;font-family:'Segoe UI',Tahoma,Arial,sans-serif;text-align:center;padding:24px}
-.box{max-width:420px}
-img{width:88px;height:88px;margin-bottom:24px}
-h1{color:#fbbf24;font-size:28px;font-weight:700;margin-bottom:12px}
-p{font-size:18px;color:#9ca3af;line-height:1.8}
-</style>
-</head>
-<body>
-<div class="box">
-<img src="/icon.svg" alt="">
-<h1>الموقع متوقف مؤقتًا</h1>
-<p>هيرجع قريب</p>
-</div>
-<script data-goatcounter="https://studywithremoon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
+<!doctype html><html lang='ar' dir='rtl'><head><meta charset='utf-8'><meta name="author" content="Remoon Esam"><meta name='viewport' content='width=device-width,initial-scale=1'><title>بحث شامل</title><meta name="description" content="ابحث في كل الأسئلة والتعريفات والدروس ونص الملخصات"><meta name='description' content='ابحث في كل الأسئلة والتعريفات والدروس'><meta name='theme-color' content='#0a0f1f'><link rel='stylesheet' href='app.css?v=24'><link rel='stylesheet' href='font.css?v=1'><script>try{if(localStorage.getItem("fr2-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script><style>.nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:8px;-webkit-overflow-scrolling:touch}.nav a{flex:none;text-decoration:none;color:#bfdbfe;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:14px;min-height:40px;display:flex;align-items:center;white-space:nowrap}
+.hero{padding:24px 20px;border-radius:20px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#fbbf24 0%,#0f766e 60%,#0b2a4a 100%);display:flex;flex-direction:column;gap:12px}
+.hero h1{margin:0;font-size:24px}.hero p{margin:0;opacity:.92}
+.sbox{margin:14px 0;padding:14px;border:1px solid #fde68a;border-radius:14px;background:rgba(251,191,36,.06)}
+.sbox input{width:100%;min-height:48px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#0b1730;color:#fff;font:inherit;padding:0 14px}
+.grp{margin:16px 0 6px;font-weight:800;color:var(--a);font-size:15px}
+.qa{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);line-height:1.9;display:block;text-decoration:none;color:inherit}
+.qa .q{font-weight:800}.qa .a{margin-top:4px;color:var(--a);font-size:.9rem}.qa .s{margin-top:4px;font-size:.78rem;opacity:.65}
+mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px;padding:0 1px}
+.foot{font-size:11px;opacity:.7;text-align:center;margin:18px 0}
+.none{padding:18px;text-align:center;opacity:.75}
+</style><link href="pagefind/pagefind-ui.css" rel="stylesheet"><style>.pagefind-ui{--pagefind-ui-text:#e5e7eb;--pagefind-ui-background:#0b1730;--pagefind-ui-border:rgba(253,230,138,.4);--pagefind-ui-tag:#132a4a;--pagefind-ui-primary:#fbbf24;--pagefind-ui-border-radius:12px;--pagefind-ui-font:inherit}.pagefind-ui__result-title{color:#fde68a}</style><link rel="canonical" href="https://studywithremoon.github.io/search.html">
+<link rel="stylesheet" href="modern.css?v=2">
+</head><body style="--a:#fde68a"><div class="wrap"><span class="r" aria-hidden="true" data-pagefind-ignore>R</span><main>
+<nav class="nav" aria-label="التنقل"><a href="index.html">الرئيسية</a><a href="dash.html">لوحتي</a><a href="cards.html">بطاقات التعريفات</a><a href="mock.html">امتحان تجريبي</a></nav>
+<div class="hero"><h1>بحث شامل</h1><p>ابحث بأي كلمة وهتلاقيها في كل الأسئلة والتعريفات والدروس في مكان واحد</p></div>
+<div class="sbox"><input id="q" type="search" placeholder="اكتب كلمة البحث..." autocomplete="off"></div>
+<div id="out"></div>
+<div class="grp" style="margin-top:26px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px">أو دور في نص كل الصفحات والملخصات:</div>
+<div id="pfind"></div>
+<script src="pagefind/pagefind-ui.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){new PagefindUI({element:"#pfind",showSubResults:true,bundlePath:"/pagefind/",translations:{placeholder:"ابحث في نص الملخصات...",clear_search:"مسح",load_more:"نتايج أكتر",search_label:"بحث في الموقع",filters_label:"فلاتر",zero_results:"مفيش نتايج لـ [SEARCH_TERM]",many_results:"[COUNT] نتيجة لـ [SEARCH_TERM]",one_result:"نتيجة واحدة لـ [SEARCH_TERM]",alt_search:"مفيش نتايج لـ [SEARCH_TERM]... جرّب [DIFFERENT_TERM]",search_suggestion:"مفيش نتايج لـ [SEARCH_TERM]... جرّب واحدة من دول:",searching:"بيدور على [SEARCH_TERM]..."}});});</script>
+<p class="foot">للمراجعة والتدريب</p></main></div>
+<script>(function(){
+var $=function(i){return document.getElementById(i)};
+function norm(s){return (s||'').replace(/[\u064B-\u0652]/g,'').replace(/[\u0623\u0625\u0622\u0671]/g,'\u0627').replace(/\u0649/g,'\u064A').replace(/\u0629/g,'\u0647').toLowerCase()}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function hl(s,t){var e=esc(s);if(!t)return e;var te=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+try{return e.replace(new RegExp('('+te+')','gi'),'<mark>$1</mark>')}catch(_){return e}}
+function cut(s,n){s=(s||'').replace(/\s+/g,' ').trim();return s.length>n?s.slice(0,n)+'...':s}
+var data=null;
+Promise.all([fetch('mcq.json').then(function(r){return r.json()}),fetch('defs.json').then(function(r){return r.json()}),fetch('search-index.json').then(function(r){return r.json()})]).then(function(all){data={mcq:all[0],defs:all[1],idx:all[2]};if(location.hash.length>1){$('q').value=decodeURIComponent(location.hash.slice(1));go()}}).catch(function(){$('out').innerHTML='<div class="none">تعذر تحميل البيانات</div>'});
+function item(href,q,a,s,t){return '<a class="qa" href="'+href+'"><div class="q">'+hl(q,t)+'</div>'+(a?'<div class="a">'+hl(cut(a,160),t)+'</div>':'')+'<div class="s">'+esc(s||'')+'</div></a>'}
+function go(){var raw=$('q').value.trim();var out=$('out');
+if(!data){out.innerHTML='';return}
+if(norm(raw).length<2){out.innerHTML='';return}
+var t=norm(raw);var h='';
+var ds=data.defs.filter(function(d){return norm(d.q).indexOf(t)>-1||norm(d.a).indexOf(t)>-1});
+if(ds.length){h+='<div class="grp">تعريفات ('+ds.length+')</div>';ds.slice(0,30).forEach(function(d){h+=item(d.p+'?q='+d.i,d.q,d.a,d.s,raw)});if(ds.length>30)h+='<div class="foot">و '+(ds.length-30)+' نتيجة أخرى</div>'}
+var ms=data.mcq.filter(function(d){if(norm(d.q).indexOf(t)>-1)return true;var o=d.o||[];for(var i=0;i<o.length;i++){if(norm(o[i]).indexOf(t)>-1)return true}return false});
+if(ms.length){h+='<div class="grp">أسئلة ('+ms.length+')</div>';ms.slice(0,30).forEach(function(d){h+=item(d.p+'?q='+d.i,d.q,'',d.s,raw)});if(ms.length>30)h+='<div class="foot">و '+(ms.length-30)+' نتيجة أخرى</div>'}
+var xs=(data.idx.e||[]).filter(function(d){return norm(d.t).indexOf(t)>-1||norm(d.b).indexOf(t)>-1});
+if(xs.length){h+='<div class="grp">دروس وصفحات ('+xs.length+')</div>';xs.slice(0,20).forEach(function(d){var cc=data.idx.c&&data.idx.c[d.c];h+=item((cc?cc.f:'dash.html')+(d.k?'#p'+d.k+'-'+d.i:''),d.t,d.b,cc?cc.n:'',raw)});if(xs.length>20)h+='<div class="foot">و '+(xs.length-20)+' نتيجة أخرى</div>'}
+out.innerHTML=h||'<div class="none">مفيش نتائج مطابقة — جرب كلمة تانية</div>'}
+$('q').addEventListener('input',go);
+})()</script><script src="feat.js?v=10" defer></script><div id="crights" data-pagefind-ignore style="text-align:center;opacity:.55;font-size:12px;margin:24px 0 8px">كل الحقوق محفوظة © Remoon. ممنوع إعادة النشر من غير إذن</div>
+</body></html>

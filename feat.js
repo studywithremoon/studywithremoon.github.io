@@ -140,8 +140,8 @@ if(window.SD_CATS)Object.keys(SD_CATS).forEach(function(k){SD_CATS[k]=SD_CATS[k]
 (function(){try{var P=location.pathname.split('/').pop()||'index.html';if(P!=='index.html')return;var L=localStorage;
 function go(){var h=document.querySelector('.hero:not(.s)');if(!h||h.querySelector('.exc'))return;
 var pr={};try{pr=JSON.parse(L.getItem('fr2-progress')||'{}')}catch(e){}
-fetch('mcq.json').then(function(r){return r.json()}).then(function(m){var T={},D={},ALL=0,DN=0;m.forEach(function(q){ALL++;var s=q.p.replace(/\d.*$/,'').replace(/^pfb$/,'pf');T[s]=(T[s]||0)+1;var a=pr[q.p];if(a&&a[q.i]&&a[q.i].ok){D[s]=(D[s]||0)+1;DN++}});var sn=document.getElementById('sn');if(sn&&ALL)sn.textContent=DN+'/'+ALL;
-document.querySelectorAll('a.cc[href$=".html"]').forEach(function(a){var s=a.getAttribute('href').replace('.html','');if(!T[s]||a.querySelector('.spb'))return;var n=D[s]||0,b=document.createElement('div');b.className='spb';b.setAttribute('aria-label','التقدم');b.style.cssText='height:5px;border-radius:99px;background:rgba(255,255,255,.12);margin-top:10px;overflow:hidden';var i=document.createElement('i');i.style.cssText='display:block;height:100%;border-radius:99px;background:var(--a,#5eead4);width:'+Math.round(n/T[s]*100)+'%';b.appendChild(i);var g=a.querySelector('.go');a.insertBefore(b,g||null);if(g)g.textContent=g.textContent+' · '+n+'/'+T[s]})}).catch(function(){})}
+var idl=window.requestIdleCallback||function(f){setTimeout(f,1500)};idl(function(){fetch('mcq.json').then(function(r){return r.json()}).then(function(m){var T={},D={},ALL=0,DN=0;m.forEach(function(q){ALL++;var s=q.p.replace(/\d.*$/,'').replace(/^pfb$/,'pf');T[s]=(T[s]||0)+1;var a=pr[q.p];if(a&&a[q.i]&&a[q.i].ok){D[s]=(D[s]||0)+1;DN++}});var sn=document.getElementById('sn');if(sn&&ALL)sn.textContent=DN+'/'+ALL;
+document.querySelectorAll('a.cc[href$=".html"]').forEach(function(a){var s=a.getAttribute('href').replace('.html','');if(!T[s]||a.querySelector('.spb'))return;var n=D[s]||0,b=document.createElement('div');b.className='spb';b.setAttribute('aria-label','التقدم');b.style.cssText='height:5px;border-radius:99px;background:rgba(255,255,255,.12);margin-top:10px;overflow:hidden';var i=document.createElement('i');i.style.cssText='display:block;height:100%;border-radius:99px;background:var(--a,#5eead4);width:'+Math.round(n/T[s]*100)+'%';b.appendChild(i);var g=a.querySelector('.go');a.insertBefore(b,g||null);if(g)g.textContent=g.textContent+' · '+n+'/'+T[s]})}).catch(function(){})})}
 go();document.addEventListener('DOMContentLoaded',go)}catch(e){}})();
 
 // premium polish (additive CSS only)
@@ -239,3 +239,84 @@ document.addEventListener('contextmenu',_cp);
 document.addEventListener('copy',_cp);
 document.addEventListener('cut',_cp);
 }catch(e){}
+
+// ==== study tools upgrade: in-chapter search + review mode + reading progress + font reset ====
+(function(){try{
+var L=localStorage,P=location.pathname.split('/').pop()||'index.html';
+function g(k,d){try{var v=JSON.parse(L.getItem(k));return v==null?d:v}catch(e){return d}}
+var qas=[].slice.call(document.querySelectorAll('.qa'));
+var chapter=qas.length>0;
+// reading progress bar (every page)
+var pb=document.createElement('div');pb.id='sdpbar';pb.setAttribute('aria-hidden','true');
+var st=document.createElement('style');st.textContent='#sdpbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:linear-gradient(90deg,#5eead4,#38bdf8);z-index:90;transition:width .12s ease-out}@media print{#sdpbar{display:none}}'
++'.sdsbar{position:fixed;top:10px;inset-inline:12px;z-index:95;display:flex;gap:8px;align-items:center;background:#0b1730;border:1px solid #5eead4;border-radius:14px;padding:8px 10px;box-shadow:0 8px 30px rgba(0,0,0,.5)}'
++'.sdsbar input{flex:1;min-width:0;background:#0a0f1f;color:#f0f9ff;border:1px solid rgba(94,234,212,.5);border-radius:10px;padding:8px 12px;font:inherit;font-size:15px}'
++'.sdsbar .n{font-size:13px;color:#5eead4;font-weight:700;white-space:nowrap}'
++'.sdsbar .x{border:0;background:transparent;color:#fbbf24;font:700 16px inherit;cursor:pointer;padding:2px 6px}'
++'.sdrevb{position:fixed;top:54px;inset-inline:0;margin:auto;width:max-content;max-width:92vw;z-index:70;background:#5eead4;color:#062a24;border-radius:999px;padding:4px 14px;font:700 12px/1.6 inherit;font-family:inherit;border:0;cursor:pointer}'
++'body.sdrev .qa.sdh{display:none}body.sdsf .qa.sdh{display:none}'
++'body.sdrev,body.sdsfo{padding-top:56px}'
++'@media print{.sdsbar,.sdrevb{display:none}}';
+document.head.appendChild(st);document.body.appendChild(pb);
+function upd(){var h=document.documentElement;var max=h.scrollHeight-innerHeight;var w=max>0?Math.min(100,Math.round(scrollY/max*100)):100;pb.style.width=w+'%'}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+// font reset next to A+/A-
+var fa2=document.getElementById('fa2');
+if(fa2){var fr=document.createElement('button');fr.type='button';fr.id='fa0';fr.setAttribute('aria-label','إعادة حجم الخط');fr.textContent='A↺';
+fr.onclick=function(){document.documentElement.style.fontSize='100%';try{L.setItem('sd-fs','100')}catch(e){}};
+fa2.parentNode.insertBefore(fr,fa2.nextSibling)}
+if(!chapter)return;
+// arabic normalization for search
+function norm(t){return (t||'').replace(/[ً-ْٰـ]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,' ').trim()}
+qas.forEach(function(q){q.dataset.n=norm(q.textContent)});
+// in-chapter search
+var fabs=document.querySelector('.fabs');
+var bar=null,sb=null;
+function closeSearch(){if(bar){bar.remove();bar=null}document.body.classList.remove('sdsf');document.body.classList.remove('sdsfo');qas.forEach(function(q){if(!document.body.classList.contains('sdrev'))q.classList.remove('sdh')})}
+function applyRev(){var pins=g('sd-pins',{}),wrong=g('sd-wrong',{});var n=0;
+qas.forEach(function(q){var k=P+'#'+q.dataset.qi;var keep=pins[k]!=null||wrong[k]!=null;if(!keep)n++;q.classList.toggle('sdh',!keep)});return n}
+function openSearch(){if(bar){bar.querySelector('input').focus();return}
+bar=document.createElement('div');bar.className='sdsbar';
+bar.innerHTML='<input type="search" placeholder="ابحث جوه الشابتر…" aria-label="بحث داخل الشابتر"><span class="n"></span><button type="button" class="x" aria-label="إغلاق البحث">✕</button>';
+document.body.appendChild(bar);document.body.classList.add('sdsfo');
+var inp=bar.querySelector('input'),num=bar.querySelector('.n');
+bar.querySelector('.x').onclick=closeSearch;
+inp.addEventListener('input',function(){var t=norm(inp.value);document.body.classList.toggle('sdsf',t.length>0);
+if(!t){qas.forEach(function(q){q.classList.remove('sdh')});num.textContent='';return}
+var c=0,first=null;
+qas.forEach(function(q){var hit=q.dataset.n.indexOf(t)>-1;q.classList.toggle('sdh',!hit);if(hit){c++;if(!first)first=q}});
+num.textContent=c+' نتيجة';if(first)first.scrollIntoView({block:'center'})});
+inp.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+inp.focus()}
+if(fabs){sb=document.createElement('button');sb.type='button';sb.textContent='بحث';sb.setAttribute('aria-label','بحث داخل الشابتر');sb.onclick=openSearch;fabs.appendChild(sb)}
+document.addEventListener('keydown',function(e){if(e.key==='/'&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();openSearch()}});
+// review mode: only pinned + wrong questions
+var rev=false,revb=null;
+function revOff(){rev=false;document.body.classList.remove('sdrev');if(revb){revb.remove();revb=null}qas.forEach(function(q){q.classList.remove('sdh')})}
+function revOn(){rev=true;document.body.classList.add('sdrev');var hidden=applyRev();var shown=qas.length-hidden;
+revb=document.createElement('button');revb.type='button';revb.className='sdrevb';
+revb.textContent=shown>0?('وضع المراجعة: '+shown+' سؤال للمراجعة · اضغط للخروج'):'وضع المراجعة: مفيش أسئلة مثبتة أو متعلمة غلط · اضغط للخروج';
+revb.onclick=revOff;document.body.appendChild(revb);
+window.scrollTo({top:0,behavior:'instant'})}
+if(fabs){var rb=document.createElement('button');rb.type='button';rb.textContent='مراجعة';rb.setAttribute('aria-label','وضع المراجعة');rb.onclick=function(){if(rev)revOff();else revOn()};fabs.appendChild(rb)}
+}catch(e){}})();
+
+/* modern pass tools: continue card + back to top */
+(function(){
+try{
+var L=localStorage;
+function g(k,d){try{var v=JSON.parse(L.getItem(k));return v==null?d:v}catch(e){return d}}
+var P=location.pathname.split('/').pop()||'index.html';
+if(P==='index.html'){
+  var last=g('sd-last',null);
+  if(last&&last.p&&last.p!==P){
+    var a=document.createElement('a');a.className='contcard';a.href=last.p+'?q='+last.i;
+    a.innerHTML='<span class="ic">▶</span><span><strong>أكمل من حيث وقفت</strong><span>'+last.t+' · سؤال '+(last.i+1)+'</span></span>';
+    var hero=document.querySelector('.hero');
+    if(hero&&hero.parentNode){hero.parentNode.insertBefore(a,hero.nextSibling)}
+  }
+}
+var fabs=document.querySelector('.fabs');
+if(fabs){var up=document.createElement('button');up.type='button';up.textContent='↑';up.setAttribute('aria-label','فوق لأول الصفحة');
+up.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};fabs.appendChild(up)}
+}catch(e){}})();

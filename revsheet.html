@@ -1,25 +1,37 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الموقع متوقف مؤقتًا</title>
-<link rel="icon" href="/icon.svg" type="image/svg+xml">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0f1f;color:#e5e7eb;font-family:'Segoe UI',Tahoma,Arial,sans-serif;text-align:center;padding:24px}
-.box{max-width:420px}
-img{width:88px;height:88px;margin-bottom:24px}
-h1{color:#fbbf24;font-size:28px;font-weight:700;margin-bottom:12px}
-p{font-size:18px;color:#9ca3af;line-height:1.8}
-</style>
-</head>
-<body>
-<div class="box">
-<img src="/icon.svg" alt="">
-<h1>الموقع متوقف مؤقتًا</h1>
-<p>هيرجع قريب</p>
-</div>
-<script data-goatcounter="https://studywithremoon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
+<!doctype html><html lang='ar' dir='rtl'><head><meta charset='utf-8'><meta name="author" content="Remoon Esam"><meta name='viewport' content='width=device-width,initial-scale=1'><title>ورقة مراجعة للطباعة</title><meta name='description' content='اختار المادة واطبع ورقة مراجعة بأهم تعريفاتها'><meta name='theme-color' content='#0a0f1f'><link rel='stylesheet' href='app.css?v=24'><link rel='stylesheet' href='font.css?v=1'><script>try{if(localStorage.getItem("fr2-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script><style>.nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:8px;-webkit-overflow-scrolling:touch}.nav a{flex:none;text-decoration:none;color:#bfdbfe;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:14px;min-height:40px;display:flex;align-items:center;white-space:nowrap}
+.hero{padding:24px 20px;border-radius:20px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#fbbf24 0%,#0f766e 60%,#0b2a4a 100%);display:flex;flex-direction:column;gap:12px}
+.hero h1{margin:0;font-size:24px}.hero p{margin:0;opacity:.92}
+.pick{margin:14px 0;padding:14px;border:1px solid #fde68a;border-radius:14px;background:rgba(251,191,36,.06)}
+.pick select{min-height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#0b1730;color:#fff;font:inherit;padding:0 8px;width:100%;margin:6px 0}
+.pick button{width:100%;min-height:46px;border:1px solid #fbbf24;border-radius:12px;background:#fbbf24;color:#06121f;font:800 15px inherit;cursor:pointer;margin-top:6px}
+.pr{width:100%;min-height:46px;border:1px solid #5eead4;border-radius:12px;background:transparent;color:#5eead4;font:800 15px inherit;cursor:pointer;margin:10px 0}
+.qa{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);line-height:1.9}.qa .q{font-weight:800}.qa .a{margin-top:6px;color:var(--a)}
+.foot{font-size:11px;opacity:.7;text-align:center;margin:18px 0}
+@media print{.pick,.pr,.nav,.hero p{display:none!important}}
+</style><link rel="canonical" href="https://studywithremoon.github.io/revsheet.html">
+<link rel="stylesheet" href="modern.css?v=2">
+</head><body style="--a:#fde68a"><div class="wrap"><span class="r" aria-hidden="true" data-pagefind-ignore>R</span><main>
+<nav class="nav" aria-label="التنقل"><a href="index.html">الرئيسية</a><a href="dash.html">لوحتي</a><a href="cards.html">بطاقات التعريفات</a><a href="mock.html">امتحان تجريبي</a></nav>
+<div class="hero"><h1>ورقة مراجعة للطباعة</h1><p>اختار المادة، وورقة المراجعة هتجهز بأهم تعريفاتها وأسئلتها، اطبعها أو احفظها PDF</p></div>
+<div class="pick"><label for="sub">المادة</label><select id="sub"></select><label for="cnt">عدد الأسئلة</label><select id="cnt"><option value="20">20</option><option value="40" selected>40</option><option value="1000">الكل</option></select><button type="button" id="go">جهّز الورقة</button></div>
+<button type="button" class="pr" id="pr" style="display:none">اطبع / احفظ PDF</button>
+<div id="out"></div>
+<p class="foot">للمراجعة والتدريب</p></main></div>
+<script>(function(){
+var $=function(i){return document.getElementById(i)};
+fetch('defs.json').then(function(r){return r.json()}).then(function(D){
+var subs=[],seen={};D.forEach(function(d){if(d.s&&!seen[d.s]){seen[d.s]=1;subs.push(d.s)}});
+var sel=$('sub');subs.forEach(function(x){var o=document.createElement('option');o.value=o.textContent=x;sel.appendChild(o)});
+$('go').onclick=function(){
+var s=sel.value,n=+$('cnt').value,list=D.filter(function(d){return d.s===s}).slice(0,n);
+var out=$('out');out.innerHTML='';
+var h=document.createElement('h2');h.textContent=s;h.style.color='#fde68a';out.appendChild(h);
+list.forEach(function(d){var q=document.createElement('div');q.className='qa';
+var t=document.createElement('div');t.className='q';t.textContent=d.q;
+var a=document.createElement('div');a.className='a';a.textContent=d.a;
+q.appendChild(t);q.appendChild(a);out.appendChild(q)});
+$('pr').style.display='';$('pr').onclick=function(){window.print()};
+$('pr').scrollIntoView({behavior:'smooth'})};
+}).catch(function(){$('sub').insertAdjacentHTML('afterend','<p class="foot">تعذر تحميل البيانات</p>')});
+})()</script><script src="feat.js?v=9" defer></script><div id="crights" data-pagefind-ignore style="text-align:center;opacity:.55;font-size:12px;margin:24px 0 8px">كل الحقوق محفوظة © Remoon. ممنوع إعادة النشر من غير إذن</div>
+</body></html>

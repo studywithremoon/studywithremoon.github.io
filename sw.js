@@ -1,5 +1,5 @@
-var V = 'sd22', VV = 'sd4v';
-var CORE = ["favicon.ico","app.css","app.js","feat.js","essay.js","font.css","icon.svg","vbtn.js","welcome.js","cards.html","contact.html","corp.html","corp1.html","corp2.html","corp3.html","corp4.html","corp5.html","crisis.html","crisis1.html","crisis2.html","crisis3.html","dash.html","explain.html","index.html","law.html","law1.html","law2.html","law3.html","mock.html","ops.html","ops1.html","ops2.html","ops3.html","ops4.html","pf.html","pf1.html","pf2.html","pf3.html","pfb1.html","pfb2.html","pfb3.html","practice.html","report.html","report1.html","report2.html","report3.html","report4.html","report5.html","search.html","tips.html","words.html","term2/","term2/index.html"];
+var V = 'sd25', VV = 'sd4v';
+var CORE = ["favicon.ico","app.css","app.js","feat.js","essay.js","font.css","icon.svg","vbtn.js","welcome.js","index.html","dash.html","contact.html","practice.html","cards.html","mock.html","search.html","law.html","pf.html","corp.html","crisis.html","ops.html","report.html","tips.html","words.html","revsheet.html"];
 self.addEventListener('install', function (e) {
   self.skipWaiting();
   e.waitUntil(
