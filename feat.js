@@ -152,6 +152,7 @@ go();document.addEventListener('DOMContentLoaded',go)}catch(e){}})();
 
 // read-aloud (extra 3): listen button on every question card
 (function(){if(!('speechSynthesis' in window))return;var cur=null;
+var sp=document.createElement('style');sp.textContent='.qa .q{padding-inline-end:74px}';document.head.appendChild(sp);
 var qa2=[].slice.call(document.querySelectorAll('.qa'));
 qa2.forEach(function(q){var qt=q.querySelector('.q');if(!qt)return;
 q.style.position=q.style.position||'relative';
