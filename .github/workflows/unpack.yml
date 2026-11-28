@@ -1,0 +1,22 @@
+name: unpack
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip archives and commit extracted files
+        run: |
+          shopt -s nullglob
+          zips=(*.zip)
+          if [ ${#zips[@]} -eq 0 ]; then echo 'no zip present'; exit 0; fi
+          for z in "${zips[@]}"; do unzip -o "$z" && rm "$z"; done
+          git config user.name 'bot'
+          git config user.email 'bot@example.com'
+          git add -A
+          git commit -m 'unpack site'
+          git push
