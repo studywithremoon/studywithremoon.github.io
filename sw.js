@@ -1,4 +1,4 @@
-var V = 'sd25', VV = 'sd4v';
+var V = 'sd26', VV = 'sd4v';
 var CORE = ["favicon.ico","app.css","app.js","feat.js","essay.js","font.css","icon.svg","vbtn.js","welcome.js","index.html","dash.html","contact.html","practice.html","cards.html","mock.html","search.html","law.html","pf.html","corp.html","crisis.html","ops.html","report.html","tips.html","words.html","revsheet.html"];
 self.addEventListener('install', function (e) {
   self.skipWaiting();
